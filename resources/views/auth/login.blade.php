@@ -1,31 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex justify-center">
-        <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
-            <h1 class="text-2xl text-gray-600">
-                Logout
-            </h1>
+    <div class="col-3 pt-5">
+        <h1>Login Form</h1>
+        <form method="POST" action="login">
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" name="email" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">Email address</label>
+            </div>
 
-            <input
-                required
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
-            />
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" name="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+            </div>
 
-            <input
-                required
-                type='password'
-                name='password'
-                placeholder="Password"
-                class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
-            />
+            <!-- Submit button -->
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
-            <button type="submit" class="bg-blue-500 w-1/2 text-white focus:shadow-md border-2 rounded-lg p-4 mt-6">
-                Login
-            </button>
         </form>
     </div>
 @endsection

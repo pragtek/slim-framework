@@ -11,7 +11,9 @@
         "illuminate/database": "^7.4",
         "zeuxisoo/slim-whoops": "^0.7.2",
         "vlucas/phpdotenv": "^4.1",
-        "tuupola/slim-jwt-auth": "^3.8"
+        "tuupola/slim-jwt-auth": "^3.8",
+        "illuminate/validation": "^7.30",
+        "illuminate/translation": "^7.30"
     },
     "autoload": {
         "files": [

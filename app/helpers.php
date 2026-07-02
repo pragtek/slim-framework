@@ -20,6 +20,17 @@ use Illuminate\Support\Str;
  * data_get
  * data_set
  */
+ 
+if (!function_exists('validator'))
+{
+    function validator(array $input, array $rules, array $messages = [])
+    {
+        $factory = app()->getContainer()->get(\Boot\Foundation\ValidatorFactory::class);
+
+        return $factory->make($input, $rules, $messages);
+    }
+}
+
 
 if (!function_exists('redirect'))
 {

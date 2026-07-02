@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Support\View;
-use App\Support\RequestInput;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class LoginController
 {
@@ -13,12 +14,30 @@ class LoginController
         return $view('auth.login');
     }
 
-    public function store(RequestInput $input)
+    public function store(Request $request)
     {
-        $successful = Auth::attempt($input->email, sha1($input->password));
+		$data = $request->getParsedBody();
+		$rules = [
+			'email' => 'required|email',
+			'password' => 'required'
+		];
+		
+		$validator = validator(
+            $data,
+            $rules,
+        );
+        if ($validator->fails()) {
+            dd($validator->errors());
+        }
+		
+		
+		$email = trim($data['email']);
+		$password = trim($data['password']);		
+		
+        $successful = Auth::attempt($email, sha1($password));
 
         if (!$successful) {
-            dd("Unsuccessful Login Attempt");
+            return redirect('/login');
         }
 
         return redirect('/home');
